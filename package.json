@@ -7,7 +7,7 @@
     "prepare": "husky install ",
     "init": "pnpm install",
     "clean": "lerna clean && rm -rf node_modules",
-    "test": "lerna run test",
+    "test": "lerna run test","_comment6": "在所有 Lerna 管理的包里运行 test 脚本（如果存在）",
     "docs:dev": "vuepress dev docs","_comment3": "本地运行 VuePress 文档服务器，开发时用",
     "docs:build": "vuepress build docs","_comment4": "构建 VuePress 文档为静态 HTML,workflow中部署到github站点",
     "deploy": "bash deploy.sh","_comment5": "执行 deploy.sh 脚本",

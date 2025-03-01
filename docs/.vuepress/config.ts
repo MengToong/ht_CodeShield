@@ -8,7 +8,7 @@ export default defineConfig4CustomTheme({
       description: '前端编码规范工程化',
     },
   },
-  base: '/fe-spec/',
+  base: '/ht_CodeShield/',//改成自己的仓库名
   themeConfig: {
     nav: [
       { text: '首页', link: '/index.md' },
