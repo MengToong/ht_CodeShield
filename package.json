@@ -8,12 +8,12 @@
     "init": "pnpm install",
     "clean": "lerna clean && rm -rf node_modules",
     "test": "lerna run test",
-    "docs:dev": "vuepress dev docs",
-    "docs:build": "vuepress build docs",
-    "deploy": "bash deploy.sh",
-    "publish": "lerna publish",
-    "lint": "markdownlint README.md",
-    "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s"
+    "docs:dev": "vuepress dev docs","_comment3": "本地运行 VuePress 文档服务器，开发时用",
+    "docs:build": "vuepress build docs","_comment4": "构建 VuePress 文档为静态 HTML,workflow中部署到github站点",
+    "deploy": "bash deploy.sh","_comment5": "执行 deploy.sh 脚本",
+    "publish": "lerna publish","_comment2": "发布git正式版,发布所有包到 npm 仓库",
+    "lint": "markdownlint README.md", "_comment": "检查 README.md 是否符合 Markdown 规范",
+    "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s", "_comment1": "生成 CHANGELOG.md 文件"
   },
   "keywords": [
     "encode",
