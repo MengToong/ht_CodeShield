@@ -17,7 +17,7 @@
     "eslint-plugin"
   ],
   "main": "src/index.js",
-  "author": "chenghuai",
+  "author": "mengtong",
   "homepage": "https://github.com/encode-studio-fe/fe-spec#readme",
   "license": "ISC",
   "repository": {
