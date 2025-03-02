@@ -1,5 +1,5 @@
 {
-  "name": "eslint-config-mt",
+  "name": "eslint-config-mengtong",
   "version": "1.0.11-alpha.0",
   "main": "index.js",
   "description": "mt JavaScript TypeScript Node 规范",
@@ -45,5 +45,5 @@
     "typescript": "^4.1.2",
     "vue-eslint-parser": "^7.3.0"
   },
-  "gitHead": "beb30b0ae282fa1d940b7883b5536d17aeb6eb75"
+  "gitHead": "0dad6b294c9161e10a8197a49f513c5d2ae2e3d5"
 }
