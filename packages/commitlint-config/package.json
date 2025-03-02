@@ -1,6 +1,6 @@
 {
   "name": "commitlint-config-mt",
-  "version": "1.0.11-alpha.0",
+  "version": "0.0.1",
   "main": "index.js",
   "description": "mt Git规范",
   "keywords": [

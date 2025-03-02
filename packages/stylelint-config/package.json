@@ -1,6 +1,6 @@
 {
   "name": "stylelint-config-mt",
-  "version": "1.0.11-alpha.0",
+  "version": "0.0.1",
   "description": "mt CSS规范",
   "main": "index.js",
   "keywords": [
