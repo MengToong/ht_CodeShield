@@ -1,6 +1,6 @@
 {
   "name": "eslint-config-mengtong",
-  "version": "0.0.1",
+  "version": "0.0.2-alpha.0",
   "main": "index.js",
   "description": "mt JavaScript TypeScript Node 规范",
   "keywords": [
