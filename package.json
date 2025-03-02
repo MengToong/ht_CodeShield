@@ -6,7 +6,7 @@
     "preinstall": "npx only-allow pnpm",
     "prepare": "husky install ",
     "init": "pnpm install",
-    "clean": "lerna clean && rm -rf node_modules",
+    "clean": "lerna clean && rmdir /s /q node_modules",
     "test": "lerna run test",
     "_comment6": "在所有 Lerna 管理的包里运行 test 脚本（如果存在）",
     "docs:dev": "vuepress dev docs",

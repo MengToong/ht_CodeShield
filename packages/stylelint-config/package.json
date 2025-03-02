@@ -1,7 +1,7 @@
 {
-  "name": "stylelint-config-encode",
+  "name": "stylelint-config-mt",
   "version": "1.0.9",
-  "description": "印客学院 CSS规范",
+  "description": "mt CSS规范",
   "main": "index.js",
   "keywords": [
     "encode",

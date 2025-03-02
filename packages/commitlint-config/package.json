@@ -1,8 +1,8 @@
 {
-  "name": "commitlint-config-encode",
+  "name": "commitlint-config-mt",
   "version": "1.0.8",
   "main": "index.js",
-  "description": "印客学院 Git规范",
+  "description": "mt Git规范",
   "keywords": [
     "encode",
     "commit",
