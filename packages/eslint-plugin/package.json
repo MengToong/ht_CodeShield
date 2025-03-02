@@ -1,6 +1,6 @@
 {
   "name": "eslint-plugin-mt",
-  "version": "1.0.8",
+  "version": "1.0.10-alpha.0",
   "description": "mt自定义eslint插件",
   "scripts": {
     "test": "jest",
