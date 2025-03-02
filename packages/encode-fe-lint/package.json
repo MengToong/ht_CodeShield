@@ -6,7 +6,7 @@
   "main": "./lib/index.js",
   "scripts": {
     "dev": "npm run copyfiles && tsc -w",
-    "build": "rmdir /s /q lib && npm run copyfiles && tsc",
+    "build": "npx rimraf lib && npm run copyfiles && tsc",
     "copyfiles": "copyfiles -a -u 1 \"src/config/**\" lib",
     "test": "npm run build && jest",
     "coverage": "nyc jest --silent --forceExit",
@@ -94,5 +94,6 @@
   },
   "bugs": {
     "url": "https://github.com/encode-studio-fe/fe-spec/issues"
-  }
+  },
+  "gitHead": "beb30b0ae282fa1d940b7883b5536d17aeb6eb75"
 }

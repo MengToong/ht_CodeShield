@@ -25,4 +25,4 @@ git commit -m "deploy, $commit_info"
 git push -f $push_addr HEAD:$push_branch
 
 cd -
-rmdir /s /q $dist_path
+npx rimraf $dist_path
