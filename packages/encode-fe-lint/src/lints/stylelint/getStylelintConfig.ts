@@ -21,15 +21,15 @@ export function getStylelintConfig(opts: ScanOptions, pkg: PKG, config: Config):
     // 若用户传入了 stylelintOptions，则用用户的
     Object.assign(lintConfig, config.stylelintOptions);
   } else {
-    // 根据扫描目录下有无lintrc文件，若无则使用默认的 lint 配置
+    // #根据扫描目录下有无stylelintrc文件，若无则使用默认的 lint 配置
     const lintConfigFiles = glob.sync('.stylelintrc?(.@(js|yaml|yml|json))', { cwd });
     if (lintConfigFiles.length === 0 && !pkg.stylelint) {
       lintConfig.config = {
-        extends: 'stylelint-config-encode',
+        extends: 'stylelint-config-encode',//使用默认的配置
       };
     }
 
-    // 根据扫描目录下有无lintignore文件，若无则使用默认的 ignore 配置
+    //# 根据扫描目录下有无stylelintignore文件，若无则使用默认的 ignore 配置
     const ignoreFilePath = path.resolve(cwd, '.stylelintignore');
     if (!fs.existsSync(ignoreFilePath)) {
       lintConfig.ignorePattern = STYLELINT_IGNORE_PATTERN;

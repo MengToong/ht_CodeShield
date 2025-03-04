@@ -59,7 +59,7 @@ program
   });
 
 program
-  .command('scan')
+  .command('scan')//!一键扫描
   .description('一键扫描：对项目进行代码规范问题扫描')
   .option('-q, --quiet', '仅报告错误信息 - 默认: false')
   .option('-o, --output-report', '输出扫描出的规范问题日志')
@@ -73,10 +73,10 @@ program
 
     const { results, errorCount, warningCount, runErrors } = await scan({
       cwd,
-      fix: false,
+      fix: false, //#scan命令时不prettier，不修复
       include: cmd.include || cwd,
       quiet: Boolean(cmd.quiet),
-      outputReport: Boolean(cmd.outputReport),
+      outputReport: Boolean(cmd.outputReport),//是否输出结果
       ignore: cmd.ignore, // 对应 --no-ignore
     });
     let type = 'succeed';
@@ -105,7 +105,7 @@ program
   });
 
 program
-  .command('commit-file-scan')
+  .command('commit-file-scan') //!git commit前进行scan不修复，若有错则停止commit
   .description('代码提交检查: git commit 时对提交代码进行规范问题扫描')
   .option('-s, --strict', '严格模式，对 warn 和 error 问题都卡口，默认仅对 error 问题卡口')
   .action(async (cmd) => {
@@ -135,7 +135,7 @@ program
   });
 
 program
-  .command('fix')
+  .command('fix')//!一键扫描+修复
   .description('一键修复：自动修复项目的代码规范扫描问题')
   .option('-i, --include <dirpath>', '指定要进行修复扫描的目录')
   .option('--no-ignore', '忽略 eslint 的 ignore 配置文件和 ignore 规则')
@@ -147,7 +147,7 @@ program
 
     const { results } = await scan({
       cwd,
-      fix: true,
+      fix: true, //#fix命令时修复,scan才会先prettier，各lint检测完才会修复
       include: cmd.include || cwd,
       ignore: cmd.ignore, // 对应 --no-ignore
     });

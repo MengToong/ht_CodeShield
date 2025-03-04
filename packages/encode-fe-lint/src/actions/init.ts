@@ -76,7 +76,7 @@ export default async (options: InitOptions) => {
   const disableNpmInstall = options.disableNpmInstall || false; //是否禁用依赖安装
   const config: Record<string, any> = {}; //用来存储初始化过程中的配置
   const pkgPath = path.resolve(cwd, 'package.json'); //读取项目的 package.json，准备后续修改
-  let pkg: PKG = fs.readJSONSync(pkgPath);
+  let pkg: PKG = fs.readJSONSync(pkgPath);//读取 package.json
 
   // 版本检查
   if (!isTest && checkVersionUpdate) { //!步骤1：非测试环境 & 需要检查版本时，调用 update() 检查脚手架npm包是否有新版本,并根据用户配置选择自动更新
@@ -128,7 +128,7 @@ export default async (options: InitOptions) => {
     if (!disableNpmInstall) {
       log.info(`Step ${++step}. 安装依赖`);
       const npm = await npmType;
-      spawn.sync(npm, ['i', '-D', PKG_NAME], { stdio: 'inherit', cwd });//全局安装 encode-fe-lint 作为 devDependency
+      spawn.sync(npm, ['i', '-D', PKG_NAME], { stdio: 'inherit', cwd });//!全局安装 encode-fe-lint 作为 devDependency
       log.success(`Step ${step}. 安装依赖成功 :D`);
     }
   }
