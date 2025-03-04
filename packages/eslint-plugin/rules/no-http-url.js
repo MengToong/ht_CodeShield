@@ -2,10 +2,10 @@ const RULE_NAME = 'no-http-url';
 
 module.exports = {
   name: RULE_NAME,
-  meta: {
-    type: 'suggestion',
-    fixable: null,
-    messages: {
+  meta: { // 规则基本信息
+    type: 'suggestion', // 类型（可选）
+    fixable: null, // 是否支持自动修复
+    messages: { // 规则提示信息
       noHttpUrl: 'Recommended "{{url}}" switch to HTTPS',
     },
   },

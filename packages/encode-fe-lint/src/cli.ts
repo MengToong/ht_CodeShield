@@ -43,7 +43,7 @@ program
   );
 
 program
-  .command('init')
+  .command('init') //!注册 init 命令
   .description('一键接入：为项目初始化规范工具和配置，可以根据项目类型和需求进行定制')
   .option('--vscode', '写入.vscode/setting.json配置')
   .action(async (cmd) => {
@@ -51,7 +51,7 @@ program
       const configPath = path.resolve(cwd, `${PKG_NAME}.config.js`);
       generateTemplate(cwd, require(configPath), true);
     } else {
-      await init({
+      await init({ //!调用的 actions/init.ts 
         cwd,
         checkVersionUpdate: true,
       });
@@ -94,7 +94,7 @@ program
   });
 
 program
-  .command('commit-msg-scan')
+  .command('commit-msg-scan')//!在提交信息写完时（commit-msg 钩子），执行 commitlint 检查你的提交信息格式是否符合规范
   .description('commit message 检查: git commit 时对 commit message 进行检查')
   .action(() => {
     const result = spawn.sync('commitlint', ['-E', 'HUSKY_GIT_PARAMS'], { stdio: 'inherit' });

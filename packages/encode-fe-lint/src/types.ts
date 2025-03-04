@@ -2,7 +2,7 @@ import { ESLint } from 'eslint';
 import stylelint from 'stylelint';
 import markdownlint from 'markdownlint';
 
-export interface PKG {
+export interface PKG { //#表示 package.json 的结构，方便后续读取 package.json 后用这个类型约束。
   eslintConfig?: any;
   eslintIgnore?: string[];
   stylelint?: any;
@@ -13,7 +13,7 @@ export interface PKG {
   [key: string]: any;
 }
 
-export interface Config {
+export interface Config { //#定义 encode-fe-lint 的配置项（比如从 encode-fe-lint.config.js 读取的配置）
   // 是否启用 ESLint
   enableESLint?: boolean;
   // 是否启用 stylelint
@@ -30,7 +30,7 @@ export interface Config {
   markdownlintOptions?: markdownlint.Options;
 }
 
-export interface ScanOptions {
+export interface ScanOptions { //#用于代码扫描时传入的参数
   // lint 运行的工程目录
   cwd: string;
   // 进行规范扫描的目录
@@ -49,7 +49,7 @@ export interface ScanOptions {
   config?: Config;
 }
 
-export interface ScanResult {
+export interface ScanResult { //#表示扫描完每个文件的结果
   filePath: string;
   errorCount: number;
   warningCount: number;
@@ -65,14 +65,14 @@ export interface ScanResult {
   }>;
 }
 
-export interface ScanReport {
+export interface ScanReport { //#表示最终扫描整个项目的检查报告
   results: ScanResult[];
   errorCount: number;
   warningCount: number;
   runErrors: Error[];
 }
 
-export interface InitOptions {
+export interface InitOptions { //#初始化项目时用的参数
   cwd: string;
   // 是否检查并升级 encode-fe-lint 的版本
   checkVersionUpdate: boolean;
@@ -92,7 +92,7 @@ export interface InitOptions {
   disableNpmInstall?: boolean;
 }
 
-export interface IGetLintConfig {
+export interface IGetLintConfig { //#定义一个根据传入参数生成 lint 配置的方法类型
   (options: ScanOptions, pkg: PKG, config: Config): ESLint.Options;
 
   (options: ScanOptions, pkg: PKG, config: Config): stylelint.LinterOptions;
@@ -100,7 +100,7 @@ export interface IGetLintConfig {
   (options: ScanOptions, pkg: PKG, config: Config): markdownlint.Options;
 }
 
-export interface IFormatResults {
+export interface IFormatResults { //#定义一个格式化扫描结果的方法类型，可以处理不同 lint 的结果，最后统一转换成 ScanResult[] 格式
   (results: ESLint.LintResult[], quiet: boolean): ScanResult[];
   (results: stylelint.LintResult[], quiet: boolean): ScanResult[];
   (results: markdownlint.LintResults, quiet: boolean): ScanResult[];

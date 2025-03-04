@@ -6,8 +6,8 @@
   "main": "./lib/index.js",
   "scripts": {
     "dev": "npm run copyfiles && tsc -w",
-    "build": "npx rimraf lib && npm run copyfiles && tsc",
-    "copyfiles": "copyfiles -a -u 1 \"src/config/**\" lib",
+    "build": "npx rimraf lib && npm run copyfiles && tsc","_commit1": "删除 lib/ 目录（清空上次构建）。执行 copyfiles 把 src/config 下的模板复制到 lib/config。执行 tsc 进行 TypeScript 编译，把整个 src/ 目录的 .ts 源代码编译成 .js 文件输出到 lib/生成最终的 lib/ 目录",
+    "copyfiles": "copyfiles -a -u 1 \"src/config/**\" lib","_commit": "复制 src/config 目录里的所有文件到 lib/ 目录下",
     "test": "npm run build && jest",
     "coverage": "nyc jest --silent --forceExit",
     "prepublishOnly": "npm run test"

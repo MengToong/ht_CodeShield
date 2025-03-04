@@ -4,9 +4,8 @@
  */
 
 module.exports = {
-  parser: '@typescript-eslint/parser',
-  plugins: ['@typescript-eslint'],
-  settings: {
+  parser: '@typescript-eslint/parser', // 让 ESLint 能理解 TypeScript 语法
+  plugins: ['@typescript-eslint'], // 给 ESLint 增加很多只适用于 TypeScript 的规则
     // Apply special parsing for TypeScript files
     'import/parsers': {
       '@typescript-eslint/parser': ['.ts', '.d.ts', '.tsx'],

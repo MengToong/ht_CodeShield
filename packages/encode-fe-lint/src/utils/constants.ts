@@ -1,7 +1,7 @@
 import path from 'path';
 import fs from 'fs-extra';
 
-// 读取 package.json
+// #读取此脚手架项目根目录的 package.json
 const pkg: Record<string, any> = JSON.parse(
   fs.readFileSync(path.join(__dirname, '../../package.json'), 'utf8'),
 );
@@ -14,17 +14,17 @@ export enum UNICODE {
 /**
  * 包名
  */
-export const PKG_NAME: string = pkg.name;
+export const PKG_NAME: string = pkg.name;//#拿到此包package.json中的name即脚手架包名
 
 /**
  * 包版本号
  */
-export const PKG_VERSION: string = pkg.version;
+export const PKG_VERSION: string = pkg.version;//#拿到此包package.json中的version即脚手架版本号
 
 /**
  * 项目类型
  */
-export const PROJECT_TYPES: Array<{ name: string; value: string }> = [
+export const PROJECT_TYPES: Array<{ name: string; value: string }> = [ //#init时问题答案的选项列表
   {
     name: '未使用 React、Vue、Node.js 的项目（JavaScript）',
     value: 'index',
