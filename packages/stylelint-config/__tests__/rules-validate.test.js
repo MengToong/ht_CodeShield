@@ -1,4 +1,4 @@
-const assert = require('assert');
+const assert = require('assert');//断言
 const stylelint = require('stylelint');
 const path = require('path');
 
@@ -6,20 +6,20 @@ describe('test/rules-validate.test.js', () => {
   it('Validate default', async () => {
     const filePaths = [path.join(__dirname, './fixtures/index.css')];
 
-    const result = await stylelint.lint({
+    const result = await stylelint.lint({ //输入校验配置和被校验文件，跑校验，返回result
       configFile: path.join(__dirname, '../index.js'),
       files: filePaths,
-      fix: false,
+      fix: false,//校验后不修复
     });
 
-    if (result && result.errored) {
-      const filesResult = JSON.parse(result.output || '[]') || [];
+    if (result && result.errored) {//result.error若为true说明校验失败
+      const filesResult = JSON.parse(result.output || '[]') || [];//result.output数组中每项都是一个文件的校验失败结果汇报
       filesResult.forEach((fileResult) => {
         console.log(`========= ${filePaths} ==========`);
         console.log(fileResult.warnings);
       });
 
-      assert.ok(filesResult.length !== 0);
+      assert.ok(filesResult.length !== 0);//result.output数组有长度说明校验失败
     }
   });
 

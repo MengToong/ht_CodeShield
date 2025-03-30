@@ -1,6 +1,6 @@
 {
   "name": "eslint-plugin-mt",
-  "version": "0.0.2-alpha.0",
+  "version": "1.0.1",
   "description": "mt自定义eslint插件",
   "scripts": {
     "test": "jest",
@@ -12,20 +12,20 @@
     "README.md"
   ],
   "keywords": [
-    "encode",
+    "mengtong",
     "eslint",
     "eslint-plugin"
   ],
   "main": "src/index.js",
   "author": "mengtong",
-  "homepage": "https://github.com/encode-studio-fe/fe-spec#readme",
+  "homepage": "https://github.com/MengToong/ht_CodeShield#readme",
   "license": "ISC",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/encode-studio-fe/fe-spec.git"
+    "url": "git+https://github.com/MengToong/ht_CodeShield.git"
   },
   "bugs": {
-    "url": "https://github.com/encode-studio-fe/fe-spec/issues"
+    "url": "https://github.com/MengToong/ht_CodeShield/issues"
   },
   "dependencies": {
     "fs-extra": "^9.0.1",
@@ -35,5 +35,5 @@
     "eslint": "^8.7.0",
     "jest": "^26.6.3"
   },
-  "gitHead": "0dad6b294c9161e10a8197a49f513c5d2ae2e3d5"
+  "gitHead": "b756682f058e2342a484e240dad612d3c0e3c5c0"
 }

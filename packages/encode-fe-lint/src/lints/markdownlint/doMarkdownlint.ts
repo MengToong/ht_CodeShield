@@ -27,11 +27,11 @@ export async function doMarkdownlint(options: DoMarkdownlintOptions) {
       ignore: MARKDOWN_LINT_IGNORE_PATTERN,
     });
   }
-  const results = await markdownlint.promises.markdownlint({
-    ...getMarkdownlintConfig(options, options.pkg, options.config),
-    files,
+  const results = await markdownlint.promises.markdownlint({  //!markdownlint检测
+    ...getMarkdownlintConfig(options, options.pkg, options.config), //markdownlint配置
+    files,//markdownlint检测的文件
   });
-  // 修复
+  // !修复
   if (options.fix) {
     await Promise.all(
       Object.keys(results).map((filename) => formatMarkdownFile(filename, results[filename])),

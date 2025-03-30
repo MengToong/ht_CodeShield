@@ -1,6 +1,6 @@
 import chalk from 'chalk';
 import { PKG_NAME, UNICODE } from './constants';
-
+//!使终端打印时带颜色
 const { green, blue, yellow, red } = chalk;
 
 export default {

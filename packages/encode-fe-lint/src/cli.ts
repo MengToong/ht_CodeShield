@@ -39,11 +39,11 @@ const installDepsIfThereNo = async () => {
 program
   .version(PKG_VERSION)
   .description(
-    `${PKG_NAME} 是 印客学院前端编码规范工程化 的配套 Lint 工具，提供简单的 CLI 和 Node.js API，让项目能够一键接入、一键扫描、一键修复、一键升级，并为项目配置 git commit 卡点，降低项目实施规范的成本`,
+    `${PKG_NAME} 是 MengTong前端编码规范工程化 的配套 Lint 工具，提供简单的 CLI 和 Node.js API，让项目能够一键接入、一键扫描、一键修复、一键升级，并为项目配置 git commit 卡点，降低项目实施规范的成本`,
   );
 
 program
-  .command('init')
+  .command('init') //!注册 init 命令
   .description('一键接入：为项目初始化规范工具和配置，可以根据项目类型和需求进行定制')
   .option('--vscode', '写入.vscode/setting.json配置')
   .action(async (cmd) => {
@@ -51,7 +51,7 @@ program
       const configPath = path.resolve(cwd, `${PKG_NAME}.config.js`);
       generateTemplate(cwd, require(configPath), true);
     } else {
-      await init({
+      await init({ //!调用的 actions/init.ts 
         cwd,
         checkVersionUpdate: true,
       });
@@ -59,7 +59,7 @@ program
   });
 
 program
-  .command('scan')
+  .command('scan')//!一键扫描
   .description('一键扫描：对项目进行代码规范问题扫描')
   .option('-q, --quiet', '仅报告错误信息 - 默认: false')
   .option('-o, --output-report', '输出扫描出的规范问题日志')
@@ -71,12 +71,12 @@ program
     const checking = ora();
     checking.start(`执行 ${PKG_NAME} 代码检查`);
 
-    const { results, errorCount, warningCount, runErrors } = await scan({
+    const { results, errorCount, warningCount, runErrors } = await scan({//#scan
       cwd,
-      fix: false,
+      fix: false, //#scan命令时不prettier，不修复
       include: cmd.include || cwd,
       quiet: Boolean(cmd.quiet),
-      outputReport: Boolean(cmd.outputReport),
+      outputReport: Boolean(cmd.outputReport),//是否输出结果
       ignore: cmd.ignore, // 对应 --no-ignore
     });
     let type = 'succeed';
@@ -94,10 +94,10 @@ program
   });
 
 program
-  .command('commit-msg-scan')
+  .command('commit-msg-scan')//!在提交信息写完时（commit-msg 钩子），执行 commitlint 检查你的提交信息格式是否符合规范
   .description('commit message 检查: git commit 时对 commit message 进行检查')
   .action(() => {
-    const result = spawn.sync('commitlint', ['-E', 'HUSKY_GIT_PARAMS'], { stdio: 'inherit' });
+    const result = spawn.sync('commitlint', ['-E', 'HUSKY_GIT_PARAMS'], { stdio: 'inherit' });//#commitlint
 
     if (result.status !== 0) {
       process.exit(result.status);
@@ -105,7 +105,7 @@ program
   });
 
 program
-  .command('commit-file-scan')
+  .command('commit-file-scan') //!git commit前进行scan不修复，若有错则停止commit
   .description('代码提交检查: git commit 时对提交代码进行规范问题扫描')
   .option('-s, --strict', '严格模式，对 warn 和 error 问题都卡口，默认仅对 error 问题卡口')
   .action(async (cmd) => {
@@ -118,7 +118,7 @@ program
     const checking = ora();
     checking.start(`执行 ${PKG_NAME} 代码提交检查`);
 
-    const { results, errorCount, warningCount } = await scan({
+    const { results, errorCount, warningCount } = await scan({  //#scan
       cwd,
       include: cwd,
       quiet: !cmd.strict,
@@ -135,7 +135,7 @@ program
   });
 
 program
-  .command('fix')
+  .command('fix')//!一键扫描+修复
   .description('一键修复：自动修复项目的代码规范扫描问题')
   .option('-i, --include <dirpath>', '指定要进行修复扫描的目录')
   .option('--no-ignore', '忽略 eslint 的 ignore 配置文件和 ignore 规则')
@@ -145,9 +145,9 @@ program
     const checking = ora();
     checking.start(`执行 ${PKG_NAME} 代码修复`);
 
-    const { results } = await scan({
+    const { results } = await scan({//#scan
       cwd,
-      fix: true,
+      fix: true, //#fix命令时修复,scan才会先prettier，各lint检测完才会修复
       include: cmd.include || cwd,
       ignore: cmd.ignore, // 对应 --no-ignore
     });

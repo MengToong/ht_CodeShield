@@ -1,18 +1,18 @@
 ---
-title: stylelint-config-encode
+title: stylelint-config-mt
 categories:
   - 工程规范
 tags:
   - 工程规范
 author:
-  name: 澄怀
-  link: https://github.com/encode-studio-fe/fe-spec
+  name: mengtong
+  link: https://github.com/MengToong/ht_CodeShield
 ---
 
-# stylelint-config-encode
+# stylelint-config-mt
 
 :::tip
-印客学院 CSS 规范
+MengTong CSS 规范
 :::
 
 支持配套的 [stylelint 可共享配置](https://stylelint.io/user-guide/configure)。
@@ -22,7 +22,7 @@ author:
 需要先行安装 [stylelint](https://www.npmjs.com/package/stylelint) 和 [stylelint-scss](https://www.npmjs.com/package/stylelint-scss)：
 
 ```bash
-npm install stylelint-config-encode stylelint stylelint-scss --save-dev
+npm install stylelint-config-mt stylelint stylelint-scss --save-dev
 ```
 
 ## 使用
@@ -31,6 +31,6 @@ npm install stylelint-config-encode stylelint stylelint-scss --save-dev
 
 ```json
 {
-  "extends": "stylelint-config-encode"
+  "extends": "stylelint-config-mt"
 }
 ```

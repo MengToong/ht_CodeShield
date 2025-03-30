@@ -13,7 +13,7 @@ dist_path=docs/.vuepress/dist
 #要推送到 GitHub Pages 的 gh-pages 分支
 push_branch=gh-pages
 
-# 生成静态文件
+# 1.运行 VuePress 的 vuepress build docs，生成生成静态文件
 npm run docs:build
 
 # 进入生成的文件夹
@@ -22,7 +22,7 @@ cd $dist_path
 git init
 git add -A
 git commit -m "deploy, $commit_info"
-git push -f $push_addr HEAD:$push_branch
+git push -f $push_addr HEAD:$push_branch #2.将本文件夹文件即VuePress构建的静态文件推送到gh-pages分支
 
 cd -
 npx rimraf $dist_path
