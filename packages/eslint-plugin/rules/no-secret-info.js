@@ -1,3 +1,5 @@
+//!不允许危险词的值是明文，例如只能使用环境变量作为ACCESS_TOKEN
+
 const RULE_NAME = 'no-secret-info';
 
 const DEFAULT_DANGEROUS_KEYS = ['secret', 'token', 'password']; //定义默认危险关键词列表，比如 secret、token、password，用于判断变量名或对象属性名是否可能存放敏感信息

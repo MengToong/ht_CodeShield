@@ -1,3 +1,5 @@
+//!检查 package.json 里的依赖版本号是否使用了不推荐的宽泛语义版本
+
 const path = require('path');
 
 const RULE_NAME = 'no-broad-semantic-versioning';
@@ -20,8 +22,8 @@ module.exports = {
 
     const cwd = context.getCwd(); // 获取当前工作目录
 
-    return { // visitor
-      Property: function handleRequires(node) {
+    return { //! visitor
+      Property: function handleRequires(node) { // 监听 AST 中的 Property 节点（对象属性）
         if (   
           node.key &&
           node.key.value &&

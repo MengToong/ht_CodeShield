@@ -103,21 +103,21 @@ export default async (options: InitOptions) => {
   if (typeof options.enableStylelint === 'boolean') {//#步骤2：init时配置项里有enableStylelint则直接决定是否开启stylelint，否则才询问用户是否开启
     config.enableStylelint = options.enableStylelint;
   } else {
-    config.enableStylelint = await chooseEnableStylelint(!/node/.test(config.eslintType));
+    config.enableStylelint = await chooseEnableStylelint(!/node/.test(config.eslintType));//在scan里如果config.enableStylelint=true则进行stylelint检查
   }
 
   // 初始化 `enableMarkdownlint`
-  if (typeof options.enableMarkdownlint === 'boolean') {//#步骤2：init时配置项里有enableMarkdownlint则直接决定是否开启stylelint，否则才询问用户是否开启
+  if (typeof options.enableMarkdownlint === 'boolean') {//#步骤2：init时配置项里有enableMarkdownlint则直接决定是否开启Markdownlint，否则才询问用户是否开启
     config.enableMarkdownlint = options.enableMarkdownlint;
   } else {
-    config.enableMarkdownlint = await chooseEnableMarkdownLint();
+    config.enableMarkdownlint = await chooseEnableMarkdownLint();//在scan里如果config.enableMarkdownlint=true则进行Markdownlint检查
   }
 
   // 初始化 `enablePrettier`
-  if (typeof options.enablePrettier === 'boolean') {//#步骤2：init时配置项里有enablePrettier则直接决定是否开启stylelint，否则才询问用户是否开启
+  if (typeof options.enablePrettier === 'boolean') {//#步骤2：init时配置项里有enablePrettier则直接决定是否开启Prettier，否则才询问用户是否开启
     config.enablePrettier = options.enablePrettier;
   } else {
-    config.enablePrettier = await chooseEnablePrettier();
+    config.enablePrettier = await chooseEnablePrettier();//在scan里如果启用了 fix 且 Prettier 没被禁用，就用 doPrettier() 格式化代码
   }
 
   if (!isTest) { //如果不是测试环境（方便测试时跳过这些需要实际操作文件和安装依赖的步骤）
@@ -128,7 +128,7 @@ export default async (options: InitOptions) => {
     if (!disableNpmInstall) {
       log.info(`Step ${++step}. 安装依赖`);
       const npm = await npmType;
-      spawn.sync(npm, ['i', '-D', PKG_NAME], { stdio: 'inherit', cwd });//!全局安装 encode-fe-lint 作为 devDependency
+      spawn.sync(npm, ['i', '-D', PKG_NAME], { stdio: 'inherit', cwd });//!安装 encode-fe-lint 包作为项目 devDependency，自动写入项目package.json（会顺带导入encode-fe-lint 包依赖的那几个自定义规则配置包）
       log.success(`Step ${step}. 安装依赖成功 :D`);
     }
   }

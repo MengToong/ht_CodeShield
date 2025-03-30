@@ -1,3 +1,5 @@
+//!禁止在 TypeScript 项目中引入 .js 或 .jsx 文件，除非该文件是白名单中允许的
+
 const path = require('path');
 
 const RULE_NAME = 'no-js-in-ts-project';
@@ -33,7 +35,7 @@ module.exports = {
     }
     const whiteListReg = new RegExp(`(${whiteList.join('|')})$`); //把白名单数组拼接成正则表达式，用于判断文件名是不是白名单文件
 
-    if (!whiteListReg.test(fileName) && JS_REG.test(extName)) { //如果当前文件 不是白名单 且扩展名是 .js 或 .jsx
+    if (!whiteListReg.test(fileName) && JS_REG.test(extName)) { //!如果当前文件 不是白名单 且扩展名是 .js 或 .jsx
       context.report({
         loc: {
           start: {

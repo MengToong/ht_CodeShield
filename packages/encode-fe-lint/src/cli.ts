@@ -71,7 +71,7 @@ program
     const checking = ora();
     checking.start(`执行 ${PKG_NAME} 代码检查`);
 
-    const { results, errorCount, warningCount, runErrors } = await scan({
+    const { results, errorCount, warningCount, runErrors } = await scan({//#scan
       cwd,
       fix: false, //#scan命令时不prettier，不修复
       include: cmd.include || cwd,
@@ -97,7 +97,7 @@ program
   .command('commit-msg-scan')//!在提交信息写完时（commit-msg 钩子），执行 commitlint 检查你的提交信息格式是否符合规范
   .description('commit message 检查: git commit 时对 commit message 进行检查')
   .action(() => {
-    const result = spawn.sync('commitlint', ['-E', 'HUSKY_GIT_PARAMS'], { stdio: 'inherit' });
+    const result = spawn.sync('commitlint', ['-E', 'HUSKY_GIT_PARAMS'], { stdio: 'inherit' });//#commitlint
 
     if (result.status !== 0) {
       process.exit(result.status);
@@ -118,7 +118,7 @@ program
     const checking = ora();
     checking.start(`执行 ${PKG_NAME} 代码提交检查`);
 
-    const { results, errorCount, warningCount } = await scan({
+    const { results, errorCount, warningCount } = await scan({  //#scan
       cwd,
       include: cwd,
       quiet: !cmd.strict,
@@ -145,7 +145,7 @@ program
     const checking = ora();
     checking.start(`执行 ${PKG_NAME} 代码修复`);
 
-    const { results } = await scan({
+    const { results } = await scan({//#scan
       cwd,
       fix: true, //#fix命令时修复,scan才会先prettier，各lint检测完才会修复
       include: cmd.include || cwd,
