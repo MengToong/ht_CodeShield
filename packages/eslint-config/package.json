@@ -4,7 +4,7 @@
   "main": "index.js",
   "description": "mt JavaScript TypeScript Node 规范",
   "keywords": [
-    "encode",
+    "mengtong",
     "javaScript",
     "typescript",
     "node",
@@ -16,14 +16,14 @@
     "print-config": "eslint --print-config ./index.js > ./print-config.json"
   },
   "author": "mengtong",
-  "homepage": "https://github.com/encode-studio-fe/fe-spec#readme",
+  "homepage": "https://github.com/MengToong/ht_CodeShield#readme",
   "license": "ISC",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/encode-studio-fe/fe-spec.git"
+    "url": "git+https://github.com/MengToong/ht_CodeShield.git"
   },
   "bugs": {
-    "url": "https://github.com/encode-studio-fe/fe-spec/issues"
+    "url": "https://github.com/MengToong/ht_CodeShield/issues"
   },
   "devDependencies": {
     "@babel/core": "^7.16.0",

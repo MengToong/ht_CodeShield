@@ -12,20 +12,20 @@
     "README.md"
   ],
   "keywords": [
-    "encode",
+    "mengtong",
     "eslint",
     "eslint-plugin"
   ],
   "main": "src/index.js",
   "author": "mengtong",
-  "homepage": "https://github.com/encode-studio-fe/fe-spec#readme",
+  "homepage": "https://github.com/MengToong/ht_CodeShield#readme",
   "license": "ISC",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/encode-studio-fe/fe-spec.git"
+    "url": "git+https://github.com/MengToong/ht_CodeShield.git"
   },
   "bugs": {
-    "url": "https://github.com/encode-studio-fe/fe-spec/issues"
+    "url": "https://github.com/MengToong/ht_CodeShield/issues"
   },
   "dependencies": {
     "fs-extra": "^9.0.1",

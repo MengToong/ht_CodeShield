@@ -13,7 +13,7 @@ export interface PKG { //#表示 package.json 的结构，方便后续读取 pac
   [key: string]: any;
 }
 
-export interface Config { //#定义 encode-fe-lint 的配置项（比如从 encode-fe-lint.config.js 读取的配置）
+export interface Config { //#定义 mt-fe-lint项（比如从 mt-fmt-fe-lintjs 读取的配置）
   // 是否启用 ESLint
   enableESLint?: boolean;
   // 是否启用 stylelint
@@ -45,7 +45,7 @@ export interface ScanOptions { //#用于代码扫描时传入的参数
   fix?: boolean;
   // 生成报告文件
   outputReport?: boolean;
-  // scan 时指定 encode-fe-lint config，优先级高于 encode-fe-lint.config.js
+  // scan 时指定 mt-fe-lint.config，优先级高于 mt-fmt-fe-lintjs
   config?: Config;
 }
 
@@ -74,7 +74,7 @@ export interface ScanReport { //#表示最终扫描整个项目的检查报告
 
 export interface InitOptions { //#初始化项目时用的参数
   cwd: string;
-  // 是否检查并升级 encode-fe-lint 的版本
+  // 是否检查并升级 mt-fe-lint
   checkVersionUpdate: boolean;
   // 是否需要自动重写 lint 配置
   rewriteConfig?: boolean;

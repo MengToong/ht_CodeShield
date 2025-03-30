@@ -4,19 +4,19 @@
   "main": "index.json",
   "description": "mt 文档规范",
   "keywords": [
-    "encode",
+    "mengtong",
     "markdown",
     "lint"
   ],
   "author": "mengtong",
-  "homepage": "https://github.com/encode-studio-fe/fe-spec#readme",
+  "homepage": "https://github.com/MengToong/ht_CodeShield#readme",
   "license": "ISC",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/encode-studio-fe/fe-spec.git"
+    "url": "git+https://github.com/MengToong/ht_CodeShield.git"
   },
   "bugs": {
-    "url": "https://github.com/encode-studio-fe/fe-spec/issues"
+    "url": "https://github.com/MengToong/ht_CodeShield/issues"
   },
   "peerDependencies": {
     "markdownlint": "^0.28.1"

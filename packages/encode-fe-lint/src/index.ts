@@ -19,7 +19,7 @@ export const init = async (options: IInitOptions) => {
 
 export const scan = async (options: ScanOptions) => {
   const checking = ora();
-  checking.start(`执行 ${PKG_NAME} 代码检查`); //创建 loading 动画，提示“执行 encode-fe-lint 代码检查”
+  checking.start(`执行 ${PKG_NAME} 代码检查`); //创建 loading 动画，提示“执行 mt-fe-lint查”
 
   const report = await scanAction(options); //#调用 ./actions/scan 执行代码检查，得到检查结果
   const { results, errorCount, warningCount } = report;

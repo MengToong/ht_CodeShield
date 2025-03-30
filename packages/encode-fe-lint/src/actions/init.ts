@@ -128,7 +128,7 @@ export default async (options: InitOptions) => {
     if (!disableNpmInstall) {
       log.info(`Step ${++step}. 安装依赖`);
       const npm = await npmType;
-      spawn.sync(npm, ['i', '-D', PKG_NAME], { stdio: 'inherit', cwd });//!安装 encode-fe-lint 包作为项目 devDependency，自动写入项目package.json（会顺带导入encode-fe-lint 包依赖的那几个自定义规则配置包）
+      spawn.sync(npm, ['i', '-D', PKG_NAME], { stdio: 'inherit', cwd });//!安装 mt-fe-lint项目 devDependency，自动写入项目package.json（会顺带导入mt-fmt-fe-lint自定义规则配置包）
       log.success(`Step ${step}. 安装依赖成功 :D`);
     }
   }
@@ -140,7 +140,7 @@ export default async (options: InitOptions) => {
     pkg.scripts = {};
   }
   if (!pkg.scripts[`${PKG_NAME}-scan`]) {
-    pkg.scripts[`${PKG_NAME}-scan`] = `${PKG_NAME} scan`;//!步骤4：自动在 package.json的scripts 里加入"encode-fe-lint-scan": "encode-fe-lint scan",和"encode-fe-lint-fix": "encode-fe-lint fix"
+    pkg.scripts[`${PKG_NAME}-scan`] = `${PKG_NAME} scan`;//!步骤4：自动在 package.json的scripts 里加入"mt-fe-lint scan": "mt-fmt-fe-lint"mt-fe-limt-fe-linte-lint fmt-fe-lint
   }
   if (!pkg.scripts[`${PKG_NAME}-fix`]) {
     pkg.scripts[`${PKG_NAME}-fix`] = `${PKG_NAME} fix`;
@@ -150,8 +150,8 @@ export default async (options: InitOptions) => {
   log.info(`Step ${++step}. 配置 git commit 卡点`);
   if (!pkg.husky) pkg.husky = {}; //检查 package.json 里有没有 husky 配置，没有的话就创建空对象
   if (!pkg.husky.hooks) pkg.husky.hooks = {};
-  pkg.husky.hooks['pre-commit'] = `${PKG_NAME} commit-file-scan`;//!步骤5：配置husky：在执行 git commit 之前的pre-commit钩子执行encode-fe-lint commit-file-scan命令，检查代码文件是否符合规范，比如是否通过了 eslint 等
-  pkg.husky.hooks['commit-msg'] = `${PKG_NAME} commit-msg-scan`;//!步骤5：配置husky：提交信息写完时	的commit-msg钩子执行encode-fe-lint commit-msg-scan命令，检查提交信息是否符合规范，比如是否符合 commitlint 规范
+  pkg.husky.hooks['pre-commit'] = `${PKG_NAME} commit-file-scan`;//!步骤5：配置husky：在执行 git commit 之前的pre-commit钩子执行mt-fe-lint commit-file-scan命令，检查代码文件是否符合规范，比如是否通过了 eslint 等
+  pkg.husky.hooks['commit-msg'] = `${PKG_NAME} commit-msg-scan`;//!步骤5：配置husky：提交信息写完时	的commit-msg钩子执行mt-fe-lint commit-msg-scan命令，检查提交信息是否符合规范，比如是否符合 commitlint 规范
   fs.writeFileSync(pkgPath, JSON.stringify(pkg, null, 2));// 把修改后的 package.json 保存回文件，写入磁盘
   log.success(`Step ${step}. 配置 git commit 卡点成功 :D`);
 

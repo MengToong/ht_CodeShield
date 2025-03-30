@@ -4,7 +4,7 @@
   "description": "mt CSS规范",
   "main": "index.js",
   "keywords": [
-    "encode",
+    "mengtong",
     "style",
     "lint"
   ],
@@ -12,7 +12,7 @@
     "test": "jest"
   },
   "author": "mengtong",
-  "homepage": "https://github.com/encode-studio-fe/fe-spec#readme",
+  "homepage": "https://github.com/MengToong/ht_CodeShield#readme",
   "license": "ISC",
   "peerDependencies": {
     "stylelint": ">=8.3.0",
@@ -25,10 +25,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/encode-studio-fe/fe-spec.git"
+    "url": "git+https://github.com/MengToong/ht_CodeShield.git"
   },
   "bugs": {
-    "url": "https://github.com/encode-studio-fe/fe-spec/issues"
+    "url": "https://github.com/MengToong/ht_CodeShield/issues"
   },
   "gitHead": "0dad6b294c9161e10a8197a49f513c5d2ae2e3d5"
 }

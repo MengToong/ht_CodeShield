@@ -11,7 +11,7 @@ export default async (options: ScanOptions): Promise<ScanReport> => { //传入 S
     const localPath = path.resolve(cwd, pth);
     return fs.existsSync(localPath) ? require(localPath) : {};
   };
-  const pkg: PKG = readConfigFile('package.json'); //读取项目里的 package.json 和 encode-fe-lint.config.js（如果有）。 如果用户传入了 scanConfig 配置，就优先用传入的。
+  const pkg: PKG = readConfigFile('package.json'); //读取项目里的 package.json 和 mt-fe-lint.config.js（如果有）。 如果用户传入了 scanConfig 配置，就优先用传入的。
   const config: Config = scanConfig || readConfigFile(`${PKG_NAME}.config.js`);
   const runErrors: Error[] = []; //存储扫描过程中发生的错误
   let results: ScanResult[] = []; //存储扫描得到的所有结果
