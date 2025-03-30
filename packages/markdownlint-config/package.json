@@ -1,6 +1,6 @@
 {
   "name": "markdownlint-config-mt",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "main": "index.json",
   "description": "mt 文档规范",
   "keywords": [
