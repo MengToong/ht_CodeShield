@@ -15,7 +15,7 @@ import { PKG_NAME } from './constants';
 import type { PKG } from '../types';
 
 // 精确移除依赖
-const packageNamesToRemove = [ // 明确列出精确删除的包名，比如 eslint、prettier、husky 等
+const packageNamesToRemove = [  //!删除dependencies、devDependencies中这些依赖，因为脚手架包会带这些依赖，防止冲突
   '@babel/eslint-parser',
   '@commitlint/cli',
   '@iceworks/spec',
@@ -29,7 +29,7 @@ const packageNamesToRemove = [ // 明确列出精确删除的包名，比如 esl
 ];
 
 // 按前缀移除依赖
-const packagePrefixesToRemove = [ //支持按前缀删除，比如以 eslint-、stylelint- 开头的插件或工具
+const packagePrefixesToRemove = [ //!按前缀删除dependencies、devDependencies中以 eslint-、stylelint- 开头的插件或工具,，因为脚手架包会带这些依赖，防止冲突
   '@commitlint/',
   '@typescript-eslint/',
   'eslint-',
@@ -42,7 +42,7 @@ const packagePrefixesToRemove = [ //支持按前缀删除，比如以 eslint-、
  * 待删除的无用配置 检查项目中是否存在老版本的配置文件，比如 .eslintrc.yml、.stylelintrc.json 等，返回这些文件名
  * @param cwd
  */
-const checkUselessConfig = (cwd: string): string[] => {
+const checkUselessConfig = (cwd: string): string[] => { //!获取新项目中以杂七杂八后缀结尾的lint配置文件（如 .eslintrc.yaml / .prettierrc.toml), 等会儿会被删除（markdownlint.json与eslint.config.js这种正常的配置文件不删，但会被覆盖，见下）
   return []
     .concat(glob.sync('.eslintrc?(.@(yaml|yml|json))', { cwd }))
     .concat(glob.sync('.stylelintrc?(.@(yaml|yml|json))', { cwd }))
@@ -58,11 +58,11 @@ const checkUselessConfig = (cwd: string): string[] => {
  * 待重写的配置  检查项目中是否存在需要被覆盖的配置文件，比如模板目录（config）里的 .ejs 文件最终渲染生成的配置文件。
  * @param cwd
  */
-const checkReWriteConfig = (cwd: string) => {
+const checkReWriteConfig = (cwd: string) => {//!获取新项目中与要写入的配置文件同名的文件（要被覆盖），等会儿提示一下将会被覆盖
   return glob
-    .sync('**/*.ejs', { cwd: path.resolve(__dirname, '../config') })
-    .map((name) => name.replace(/^_/, '.').replace(/\.ejs$/, ''))
-    .filter((filename) => fs.existsSync(path.resolve(cwd, filename)));
+    .sync('**/*.ejs', { cwd: path.resolve(__dirname, '../config') })//获取 ../config 目录下所有 .ejs 模板文件的路径（相对路径）
+    .map((name) => name.replace(/^_/, '.').replace(/\.ejs$/, ''))//将模板名转换成最终会生成的文件名。如_eslintrc.js.ejs → .eslintrc.js
+    .filter((filename) => fs.existsSync(path.resolve(cwd, filename)));//筛选出新项目中与要写入的配置文件同名的文件，输出数组
 };
 
 export default async (cwd: string, rewriteConfig?: boolean) => {
@@ -113,13 +113,13 @@ export default async (cwd: string, rewriteConfig?: boolean) => {
     }
   }
 
-  // 删除配置文件
+  // 删除杂七杂八后缀的lint配置文件
   for (const name of uselessConfig) {
     fs.removeSync(path.resolve(cwd, name)); //删除检测到的无用配置文件
   }
 
   // 修正 package.json 删除内联在 package.json 里的配置
-  delete pkg.eslintConfig;
+  delete pkg.eslintConfig; //!删除新项目package.json 中旧的eslintConfig、eslintIgnore、stylelint设置(markdownlint和commitlint在package.json中无配置)
   delete pkg.eslintIgnore;
   delete pkg.stylelint;
   for (const name of willRemovePackage) { // 删除冲突依赖

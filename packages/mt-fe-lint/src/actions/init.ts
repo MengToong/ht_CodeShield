@@ -122,13 +122,15 @@ export default async (options: InitOptions) => {
 
   if (!isTest) { //如果不是测试环境（方便测试时跳过这些需要实际操作文件和安装依赖的步骤）
     log.info(`Step ${++step}. 检查并处理项目中可能存在的依赖和配置冲突`);
-    pkg = await conflictResolve(cwd, options.rewriteConfig); //!步骤3：检查你的项目里有没有与脚手架冲突的配置文件或依赖项，并修改你项目的package.json
+    pkg = await conflictResolve(cwd, options.rewriteConfig); //!步骤3：(1)删除新项目中的杂七杂八后缀的lint配置文件，提示会被覆盖的lint配置文件。
+                                                                  //! (2)删除新项目package.json中dependencies、devDependencies中脚手架引入的依赖项，防止与脚手架引入的冲突
+                                                                  //! (3)删除新项目package.json中旧的eslintConfig、eslintIgnore、stylelint设置(markdownlint和commitlint在package.json中无配置)
     log.success(`Step ${step}. 已完成项目依赖和配置冲突检查处理 :D`);
 
     if (!disableNpmInstall) {
       log.info(`Step ${++step}. 安装依赖`);
       const npm = await npmType;
-      spawn.sync(npm, ['i', '-D', PKG_NAME], { stdio: 'inherit', cwd });//!安装 mt-fe-lint项目 devDependency，自动写入项目package.json（会顺带导入mt-fmt-fe-lint自定义规则配置包）
+      spawn.sync(npm, ['i', '-D', PKG_NAME], { stdio: 'inherit', cwd });//!真正安装 encode-fe-lint 包作为新项目 devDependency，自动写入项目package.json（会顺带导入mt-fmt-fe-lint自定义规则配置包）
       log.success(`Step ${step}. 安装依赖成功 :D`);
     }
   }
